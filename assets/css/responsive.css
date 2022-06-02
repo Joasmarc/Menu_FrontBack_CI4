@@ -312,7 +312,7 @@
 }
 @media (max-width: 480px) {
 	.offer-item img{
-		width: 50%;
+		width: 90%;
 	}
 	.offer-item .offer-price{
 		width: 65px;

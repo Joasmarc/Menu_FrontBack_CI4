@@ -31,9 +31,31 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('inicio', 'Basic_controller::inicio');
+$routes->get('/', 'Basic_controller::inicio');
 $routes->get('admin', 'Basic_controller::render_login');
-$routes->post('admin', 'Basic_controller::login');
+// $routes->post('admin', 'Basic_controller::login');
+$routes->get('dashboard', 'Basic_controller::render_dashboard');
+$routes->get('menu', 'Basic_controller::render_dashboard_menu');
+$routes->get('product', 'Basic_controller::render_create_product');
+$routes->post('product', 'Basic_controller::create_product');
+
+$routes->get('category/(:any)', 'Basic_controller::render_list_products');
+$routes->get('category', 'Basic_controller::render_list_products');
+
+$routes->get('editProduct/(:num)', 'Basic_controller::render_edit_product');
+$routes->get('editProduct', 'Basic_controller::render_edit_product');
+$routes->post('editProduct', 'Basic_controller::edit_product');
+
+$routes->get('delProduct/(:num)', 'Basic_controller::delete_product');
+
+
+/*
+$routes->group('category', function ($routes) {
+    $routes->add('users', 'Home::index3');
+    $routes->add('blog', 'Home::index4');
+});
+*/
+
 
 /*
  * --------------------------------------------------------------------

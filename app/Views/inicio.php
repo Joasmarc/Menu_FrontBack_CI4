@@ -67,9 +67,11 @@
                             <div id="navbar" class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="active"><a href="#banner">Inicio</a></li>
-                                    <li><a href="#about">Mas de nuestros productos</a></li>
                                     <li><a href="#menu">Menu</a></li>
-
+                                    <li><a href="#">Cargar imagen para impresion</a></li>
+                                    <li><a href="#about">Mas de nuestros productos</a></li>
+                                    <li><a href="#">Buzon de comentarios</a></li>
+                                    <li><a href="admin">Administracion</a></li>
                                 </ul>
                             </div>
                             <!-- end nav-collapse -->
@@ -750,42 +752,24 @@
                             <!-- bebidas calientes sin cafe -->
                             <div class="row">
 
+                                <?php if (!empty($products["6"])) : ?>
+                                <?php foreach ($products["6"] as $key => $value) : ?>
                                 <div class="col-xs-6">
-                                    <div class="offer-item">
-                                        <!-- <img src="images/menu-item-thumbnail-05.jpg" alt="" class="img-responsive"> -->
+                                    <div class="offer-item" style="padding-left: 0px;">
+                                        <img src="<?= $value["url_img"] ?>" alt="" width="160" height="200"
+                                            style="border-radius: 4px;">
                                         <div>
-                                            <h4>Aromática </h4>
-                                            <h2>$ 6.000</h2>
+                                            <h4><?= $value["name"] ?></h4>
+                                            <h2>$ <?= $value["price"] ?></h2>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- end col -->
-
-                                <div class="col-xs-6">
-                                    <div class="offer-item">
-                                        <!-- <img src="images/menu-item-thumbnail-05.jpg" alt="" class="img-responsive"> -->
-                                        <div>
-                                            <h4>Chai latte</h4>
-                                            <h2>$ 8.500</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-
-                                <div class="col-xs-6">
-                                    <div class="offer-item">
-                                        <!-- <img src="images/menu-item-thumbnail-05.jpg" alt="" class="img-responsive"> -->
-                                        <div>
-                                            <h4>Matcha latte</h4>
-                                            <h2>$ 9.500</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end col -->
+                                <?php endforeach; ?>
+                                <?php endif; ?>
                             </div>
 
                             <!-- postres -->
-                            <div class="row">
+                            <div class=" row">
 
                                 <div class="col-xs-6">
                                     <div class="offer-item">
@@ -897,7 +881,8 @@
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <div class="social-circle-border"><i class="fa fa-google-plus"></i></div>
+                                            <div class="social-circle-border"><i class="fa fa-google-plus"></i>
+                                            </div>
                                         </a>
                                     </li>
                                 </ul>
@@ -906,7 +891,7 @@
                             <!-- end footer-box-a -->
                         </div>
                         <!-- end col -->
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div id="about" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <div class="footer-box-c">
                                 <h3>Contactanos</h3>
                                 <p>
