@@ -47,6 +47,8 @@
                         <div class="form-box">
                             <select name="category" id="" required="required">
                                 <?php foreach ($categories as $key => $value) : ?>
+                                <option value="<?= $product["id_category"] ?>" selected><?= $product["name_category"] ?>
+                                </option>
                                 <option class="text-uppercase" value="<?= $value["id"] ?>">
                                     <?= $value["name_category"] ?>
                                 </option>

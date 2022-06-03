@@ -26,13 +26,19 @@
 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="reserve-book-btn text-center">
-                        <button class="hvr-underline-from-center" value="SEND" id="submit">Almacen de imagenes</button>
+                        <a href="listImag">
+                            <button class="hvr-underline-from-center" value="SEND" id="submit">Almacen de
+                                imagenes</button>
+                        </a>
                     </div>
                 </div>
 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="reserve-book-btn text-center">
-                        <button class="hvr-underline-from-center" value="SEND" id="submit">Buzon de comentarios</button>
+                        <a href="listComment">
+                            <button class="hvr-underline-from-center" value="SEND" id="submit">Buzon de
+                                comentarios</button>
+                        </a>
                     </div>
                 </div>
             </div>

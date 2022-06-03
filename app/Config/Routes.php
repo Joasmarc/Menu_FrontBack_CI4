@@ -33,20 +33,40 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Basic_controller::inicio');
 $routes->get('admin', 'Basic_controller::render_login');
-// $routes->post('admin', 'Basic_controller::login');
-$routes->get('dashboard', 'Basic_controller::render_dashboard');
-$routes->get('menu', 'Basic_controller::render_dashboard_menu');
-$routes->get('product', 'Basic_controller::render_create_product');
-$routes->post('product', 'Basic_controller::create_product');
+$routes->post('admin', 'Basic_controller::login');
+$routes->get('dashboard', 'Basic_controller::render_dashboard', ['filter' => 'auth']);
+$routes->get('menu', 'Basic_controller::render_dashboard_menu', ['filter' => 'auth']);
+$routes->get('product', 'Basic_controller::render_create_product', ['filter' => 'auth']);
+$routes->post('product', 'Basic_controller::create_product', ['filter' => 'auth']);
 
-$routes->get('category/(:any)', 'Basic_controller::render_list_products');
-$routes->get('category', 'Basic_controller::render_list_products');
+$routes->get('category/(:any)', 'Basic_controller::render_list_products', ['filter' => 'auth']);
+$routes->get('category', 'Basic_controller::render_list_products', ['filter' => 'auth']);
 
-$routes->get('editProduct/(:num)', 'Basic_controller::render_edit_product');
-$routes->get('editProduct', 'Basic_controller::render_edit_product');
-$routes->post('editProduct', 'Basic_controller::edit_product');
+$routes->get('editProduct/(:num)', 'Basic_controller::render_edit_product', ['filter' => 'auth']);
+$routes->get('editProduct', 'Basic_controller::render_edit_product', ['filter' => 'auth']);
+$routes->post('editProduct', 'Basic_controller::edit_product', ['filter' => 'auth']);
+$routes->get('delProduct/(:num)', 'Basic_controller::delete_product', ['filter' => 'auth']);
 
-$routes->get('delProduct/(:num)', 'Basic_controller::delete_product');
+// img
+$routes->get('EnvioImg', 'Image_controller::render_create_image');
+$routes->post('EnvioImg', 'Image_controller::crete_img');
+$routes->get('success', 'Image_controller::render_msg_success');
+$routes->get('fail', 'Image_controller::render_msg_fail');
+$routes->get('listImag', 'Image_controller::render_list_img', ['filter' => 'auth']);
+$routes->get('delImage/(:num)', 'Image_controller::delete_img', ['filter' => 'auth']);
+//$routes->get('download', 'Image_controller::descargar_img', ['filter' => 'auth']);
+
+// comments
+$routes->get('comment', 'Comments_controller::render_form');
+$routes->post('comment', 'Comments_controller::create_comment');
+$routes->get('successComment', 'Comments_controller::render_msg_success');
+$routes->get('listComment', 'Comments_controller::render_list_comments', ['filter' => 'auth']);
+$routes->get('delComment/(:num)', 'Comments_controller::delete_comment', ['filter' => 'auth']);
+
+
+
+
+
 
 
 /*

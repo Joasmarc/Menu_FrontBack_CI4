@@ -47,9 +47,17 @@ class Basic_controller extends BaseController
 
         $username = $request->getPost("username");
         $password = $request->getPost("password");
+        //exit(var_dump($username, $password));
 
-        //$Users_model = new Users($db);
-        //$sql_matrix = $Users_model->where("username", $username)->findAll();
+        if ($username === "admin" && $password === "sonis123") {
+            $data = [
+                "certificado" => true,
+            ];
+            $this->session->set($data);
+            return redirect()->to("dashboard");
+        } else {
+            return redirect()->to("/");
+        }
 
         if (true) {
             return redirect()->to('/inicio');
@@ -168,6 +176,13 @@ class Basic_controller extends BaseController
         $Product_model = new Products($db);
         $product = $Product_model->find($id_product);
 
+        foreach ($categories_matrix as $value) {
+            if ($value["id"] === $product["id_category"]) {
+                $product["name_category"] = $value["name_category"];
+                break;
+            }
+        }
+        //exit(var_dump($product));
         $data = [
             "categories" => $categories_matrix,
             "product" => $product,
@@ -186,15 +201,6 @@ class Basic_controller extends BaseController
         $is_visible = $request->getPost("is_visible");
         $image = $request->getFile("image");
 
-        $data = [];
-        if (!empty($image->getTempName())) {
-            // img
-            $path = 'assets/images/menu';
-            $RandomName = $image->getRandomName();
-            $image->move($path, $RandomName);
-            $data["url_img"] = $path . "/" . $RandomName;
-        }
-
         $data = [
             "name" => $name,
             "price" => $price,
@@ -203,8 +209,14 @@ class Basic_controller extends BaseController
             "is_visible" => $is_visible === "0" ? false : true,
         ];
 
+        if (!empty($image->getTempName())) {
+            // img
+            $path = 'assets/images/menu';
+            $RandomName = $image->getRandomName();
+            $image->move($path, $RandomName);
+            $data["url_img"] = $path . "/" . $RandomName;
+        }
 
-        // exit(var_dump($data, $this->session->get("memory")));
         $id_product = $this->session->get("memory");
         $Prodcut_model = new Products($db);
         if ($Prodcut_model->update($id_product, $data)) {
@@ -223,7 +235,11 @@ class Basic_controller extends BaseController
 
         //exit(var_dump($id_category));
         $Product_model = new Products($db);
+
+        $image = $Product_model->find($id_product);
+
         if ($Product_model->delete($id_product, true)) {
+            unlink($image["url_img"]);
             return redirect()->to("category/$id_category");
         } else {
             return redirect()->to("category/$id_category");

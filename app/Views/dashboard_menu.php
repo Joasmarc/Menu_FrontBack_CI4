@@ -45,6 +45,14 @@
 
                 </div>
 
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <a href="dashboard">
+                        <div class="reserve-book-btn text-center">
+                            <button class="hvr-underline-from-center" value="SEND">Atras</button>
+                        </div>
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>
