@@ -104,10 +104,30 @@ class Basic_controller extends BaseController
 
         // img
 
-        $path = 'assets/images/menu';
-        $RandomName = $image->getRandomName();
 
-        $image->move($path, $RandomName);
+        $path = 'assets/images/menu';
+        $RandomName = uniqid("latelier");
+
+        // compress
+        $source = $image->getTempName();
+        $extension = $image->getClientExtension();
+
+        switch ($extension) {
+            case 'image/jpeg':
+                $image = imagecreatefromjpeg($source);
+                break;
+            case 'image/png':
+                $image = imagecreatefrompng($source);
+                break;
+            case 'image/jpg':
+                $image = imagecreatefromgif($source);
+                break;
+            default:
+                $image = imagecreatefromjpeg($source);
+        }
+
+        imagejpeg($image, $path . "/" . $RandomName . "jpeg", 75);
+        //$image->move($path, $RandomName);
 
         $data = [
             "name" => $name,
