@@ -105,6 +105,7 @@
                 <li data-filter=".category-5">Bebidas Frias Con Cafe</li>
                 <li data-filter=".category-6">Bebidas Calientes Sin Cafe</li>
                 <li data-filter=".category-7">Postres</li>
+                <li data-filter=".category-8" class="text-warning">Especialidad</li>
             </ul>
 
             <div class="filters-content">
