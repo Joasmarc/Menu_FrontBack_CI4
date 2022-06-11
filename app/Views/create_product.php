@@ -61,7 +61,7 @@
                         <h2 class="text-warning h3 text-center">Imagen</h2>
                         <div class="form-box">
                             <input type="file" accept="image/png,image/jpeg,image/jpg" name="image"
-                                placeholder="Contraseña" required="required" data-error="Password required.">
+                                placeholder="Contraseña" data-error="Password required.">
                         </div>
                     </div>
 
