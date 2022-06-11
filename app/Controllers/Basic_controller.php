@@ -12,8 +12,8 @@ class Basic_controller extends BaseController
     public function inicio()
     {
         $Product_model = new Products($db);
+        /*
         $products_matrix = $Product_model->findAll();
-
         $products_orders = array();
         foreach ($products_matrix as $key => $value) {
             if ($value["is_visible"] === "1") {
@@ -25,13 +25,16 @@ class Basic_controller extends BaseController
                 ];
             }
         }
+        */
+
+        $products_matrix = $Product_model->where("is_visible", "1")->findAll();
 
         // exit(var_dump($products_orders));
 
         $data = [
-            "products" => $products_orders,
+            "products" => $products_matrix,
         ];
-        return view('inicio', $data);
+        return view('menu', $data);
     }
 
     public function render_login()
